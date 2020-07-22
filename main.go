@@ -1,7 +1,6 @@
 package main
 
 import (
-    "net/http"
     "github.com/gin-gonic/gin"
     "github.com/sathishachilles/gin-bookstore/models"
     "github.com/sathishachilles/gin-bookstore/controllers"
