@@ -60,6 +60,18 @@ func UpdateBook(c *gin.Context) {
     c.JSON(http.StatusOK, gin.H{"data": book})
 }
 
+// DELETE /books/:id
+// Delete Book by ID
+func DeleteBook(c *gin.Context) {
+    var book models.Book
+    if err := models.DB.Where("id = ?", c.Param("id")).First(&book).Error; err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+    models.DB.Delete(&book)
+    c.Status(http.StatusNoContent)
+}
+
 // input form schemes
 
 type CreateBookInput struct {
