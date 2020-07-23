@@ -28,6 +28,7 @@ func FindBook(c *gin.Context) {
     c.JSON(http.StatusOK, gin.H{"data": book})
 }
 
+// POST /books
 // Create Book
 func CreateBook(c *gin.Context) {
     var input CreateBookInput
@@ -41,6 +42,7 @@ func CreateBook(c *gin.Context) {
    c.JSON(http.StatusOK, gin.H{"data": book})
 }
 
+// PATCH /books/:id
 // Update Book
 func UpdateBook(c *gin.Context) {
 
