@@ -16,6 +16,18 @@ func FindBooks(c *gin.Context) {
     c.JSON(http.StatusOK, gin.H{"data": books})
 }
 
+// GET/books/:id
+// Get a single book by ID
+func FindBook(c *gin.Context) {
+    var book models.Book
+    if err := models.DB.Where("id = ?", c.Param("id")).First(&book).Error; err != nil {
+        c.JSON(http.StatusNotFound, gin.H{"error": "Record Not Found"})
+        return
+    }
+
+    c.JSON(http.StatusOK, gin.H{"data": book})
+}
+
 // Create Book
 func CreateBook(c *gin.Context) {
     var input CreateBookInput
